@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# HAK Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Проект на базе Laravel с использованием Vite и TailwindCSS для современного веб-приложения.
 
-## About Laravel
+## 🚀 Технологии
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Laravel
+- Vite
+- TailwindCSS
+- PHP 8.x
+- Node.js
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Требования
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP >= 8.0
+- Composer
+- Node.js >= 16.x
+- NPM или Yarn
+- MySQL или PostgreSQL
 
-## Learning Laravel
+## 🛠 Установка
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Клонируйте репозиторий:
+```bash
+git clone [url-вашего-репозитория]
+cd hak
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Установите PHP зависимости:
+```bash
+composer install
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. Установите JavaScript зависимости:
+```bash
+npm install
+```
 
-## Laravel Sponsors
+4. Настройте окружение:
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. Настройте базу данных в файле .env и выполните миграции:
+```bash
+php artisan migrate
+```
 
-### Premium Partners
+## 🚦 Запуск проекта
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. Запустите Laravel сервер:
+```bash
+php artisan serve
+```
 
-## Contributing
+2. В отдельном терминале запустите Vite для сборки фронтенда:
+```bash
+npm run dev
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Приложение будет доступно по адресу: http://localhost:8000
 
-## Code of Conduct
+## 📁 Структура проекта
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- `app/` - Основной код приложения
+- `database/` - Миграции и сиды базы данных
+- `resources/` - Frontend ресурсы (JS, CSS, Views)
+- `routes/` - Определения маршрутов
+- `tests/` - Тесты приложения
+- `storage/` - Файлы загрузок и кэша
+- `parsers/` - Парсеры данных
 
-## Security Vulnerabilities
+## 🤖 Парсеры
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Проект включает в себя несколько специализированных парсеров для сбора данных:
 
-## License
+### Основные парсеры:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 1. Парсер Banki.ru (`parsers/bankiru/`)
+Парсер для сбора данных о кредитных картах с портала Banki.ru. Имеет два режима работы:
+- **Ручной режим** (`manual/`):
+  1. Скачайте HTML-страницы с https://www.banki.ru/products/creditcards/
+  2. Откройте все предложения банков и списки карт
+  3. Сохраните страницы через `Ctrl+S`
+  4. Укажите названия файлов в скрипте
+  5. Запустите скрипт для парсинга
+
+- **Автоматический режим** (`auto/`):
+  ```bash
+  cd parsers/bankiru/auto
+  scrapy crawl bankiru -o output.json
+  ```
+
+#### 2. Парсер VseZaimy Online (`parsers/vsezaimyonline/`)
+Парсер для сбора данных о займах и кредитных предложениях с сервиса VseZaimy Online.
+
+#### 3. Интеллектуальный краулер (`parsers/crawler-llm/`)
+Продвинутый веб-краулер с использованием языковых моделей для интеллектуального анализа содержимого страниц.
+
+### Запуск парсеров
+
+Каждый парсер имеет свою собственную документацию и инструкции по запуску в соответствующей директории. Перед использованием парсера ознакомьтесь с README.md в его директории.
+
+## 🧪 Тестирование
+
+Для запуска тестов используйте команду:
+```bash
+php artisan test
+```
+
+## 📝 Лицензия
+
+MIT License
+
+## 👥 Авторы
+
+[Ваше имя/команда]
+
+---
+Создано с использованием Laravel Framework
